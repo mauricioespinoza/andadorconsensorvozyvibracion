@@ -38,8 +38,7 @@ Versión funcional de testing con:
 
 Proyecto desarrollado con **PlatformIO** usando framework Arduino.
 
-```text
-include/
+`include/
 ├── config.h
 ├── sensores.h
 ├── alertas.h
@@ -51,7 +50,7 @@ src/
 ├── sensores.cpp
 ├── alertas.cpp
 ├── audio.cpp
-└── motores.cpp
+└── motores.cpp`
 
 ## Configuración PlatformIO
 
@@ -106,7 +105,7 @@ dfplayer.playMp3Folder(track);
 
 Por eso los nombres deben respetar el formato 0001.mp3, 0002.mp3, etc.
 
-##Lógica de alertas
+## Lógica de alertas
 
 La lógica actual trabaja con una alerta dominante.
 
@@ -126,7 +125,7 @@ Motores vibradores
 
 Los motores están controlados por PWM.
 
-Reglas actuales:
+## Reglas actuales:
 
 Alerta leve/media: solo audio
 Frente fuerte: vibran ambos motores
@@ -138,7 +137,7 @@ Pausa entre vibraciones para evitar consumo excesivo y vibración constante
 
 La potencia de prueba actual es baja para evitar daños en la maqueta/carcasa.
 
-##Ejecución
+## Ejecución
 
 Compilar:
 
@@ -155,9 +154,9 @@ pio run -t upload -t monitor
 Monitor serial:
 
 115200 baud
-Consideraciones de testing
+## Consideraciones de testing
 
-## Durante las pruebas se observaron los siguientes puntos:
+Durante las pruebas se observaron los siguientes puntos:
 
 Los motores pueden afectar el audio si la alimentación no es suficiente.
 El DFPlayer Mini puede requerir algunos segundos después del arranque antes de reproducir.
@@ -176,3 +175,6 @@ Branch
 test/08052026
 
 Esta rama representa una base funcional de testing para continuar ajustes antes de consolidar el código productivo.
+
+## Licencia
+Copyright (C) 2026 Mauricio Espinoza.This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation GPL v3
