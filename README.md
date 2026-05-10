@@ -170,4 +170,5 @@ El sensor FC-51 puede moverse con las vibraciones, por lo que debe quedar bien f
 Los HC-SR04 laterales pueden detectar la estructura o la carcasa si quedan muy cerca.
 Para uso, se recomienda mantener un entorno despejado de transito, disminuir volumen si se considera invasivo.
 
-Copyright (C) 2026 Mauricio Espinoza.This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation...
+## Licencia
+Copyright (C) 2026 Mauricio Espinoza.This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation GPL v3
