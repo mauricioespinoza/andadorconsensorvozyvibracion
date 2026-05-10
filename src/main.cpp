@@ -154,7 +154,7 @@ void setup() {
     delay(1500);
 
     Serial.println("==============================");
-    Serial.println("ANDADOR - AUDIO + MOTORES");
+    Serial.println("ANDADOR ASISTIDO");
     Serial.println("AUDIO CONTROLADO");
     Serial.println("MOTORES SOLO ALERTA FUERTE");
     Serial.println("==============================");
@@ -165,7 +165,7 @@ void setup() {
 
     apagarMotores();
 
-    delay(3000);
+    delay(2000);
 
     Serial.println("Sistema iniciado");
 }

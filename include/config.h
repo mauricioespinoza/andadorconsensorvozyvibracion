@@ -25,8 +25,8 @@
 #define FC51 25
 
 // Umbrales
-const int UMBRAL_LEVE = 20;
-const int UMBRAL_MEDIA = 10;
-const int UMBRAL_FUERTE = 5;
+const int UMBRAL_LEVE = 100;
+const int UMBRAL_MEDIA = 50;
+const int UMBRAL_FUERTE = 15;
 
 #endif
