@@ -15,7 +15,7 @@ const unsigned long DURACION_VIBRACION_MS = 3000;
 const unsigned long BLOQUEO_VIBRACION_MS = 5000;
 
 // Potencia baja para pruebas
-const int POTENCIA_MOTOR_TEST = 70;
+const int POTENCIA_MOTOR_TEST = 40;
 
 // ===============================
 // CONTROL AUDIO
