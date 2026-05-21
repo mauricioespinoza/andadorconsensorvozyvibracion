@@ -190,5 +190,5 @@ void loop() {
 
     resetAudioSiNoHayAlerta(alerta);
 
-    delay(300);
+    delay(500);
 }
