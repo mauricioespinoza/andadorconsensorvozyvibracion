@@ -1,5 +1,5 @@
 #include <Arduino.h>
-
+#include "wifi_manager.h"
 #include "sensores.h"
 #include "alertas.h"
 #include "audio.h"
@@ -15,7 +15,7 @@ const unsigned long DURACION_VIBRACION_MS = 3000;
 const unsigned long BLOQUEO_VIBRACION_MS = 5000;
 
 // Potencia baja para pruebas
-const int POTENCIA_MOTOR_TEST = 70;
+const int POTENCIA_MOTOR_TEST = 200;
 
 // ===============================
 // CONTROL AUDIO
@@ -154,18 +154,18 @@ void setup() {
     delay(1500);
 
     Serial.println("==============================");
-    Serial.println("ANDADOR ASISTIDO");
+    Serial.println("ANDADOR ASISTIDO + WiFi");
     Serial.println("AUDIO CONTROLADO");
     Serial.println("MOTORES SOLO ALERTA FUERTE");
     Serial.println("==============================");
 
+    iniciarWiFi();
     iniciarSensores();
     iniciarMotores();
     iniciarAudio();
-
     apagarMotores();
 
-    delay(2000);
+    delay(1500);
 
     Serial.println("Sistema iniciado");
 }
@@ -175,6 +175,7 @@ void setup() {
 // ===============================
 
 void loop() {
+    procesarWiFi();
     LecturasSensores lecturas = leerSensores();
 
     imprimirLecturas(lecturas);

@@ -25,6 +25,8 @@ TipoAlerta alertaPorDerecha(long distancia) {
 }
 
 TipoAlerta determinarAlerta(const LecturasSensores& lecturas) {
+
+    // Prioridad máxima: FC-51
     if (lecturas.fc51Detecta) {
         return EMERGENCIA;
     }
@@ -33,24 +35,49 @@ TipoAlerta determinarAlerta(const LecturasSensores& lecturas) {
     bool obsL = obstaculo(lecturas.izquierda);
     bool obsR = obstaculo(lecturas.derecha);
 
-    if (obsF) {
-        return alertaPorFrente(lecturas.frente);
+    // =========================
+    // PRIORIDAD 1: FUERTE
+    // =========================
+    if (obsF && lecturas.frente < UMBRAL_FUERTE) {
+        return FRENTE_FUERTE;
     }
 
-    if (obsL && obsR) {
-        long dMin = min(lecturas.izquierda, lecturas.derecha);
+    if (obsL && lecturas.izquierda < UMBRAL_FUERTE) {
+        return IZQUIERDA_FUERTE;
+    }
 
-        if (dMin < UMBRAL_FUERTE) return EMERGENCIA;
-        if (dMin < UMBRAL_MEDIA) return IZQUIERDA_MEDIA;
-        return IZQUIERDA_LEVE;
+    if (obsR && lecturas.derecha < UMBRAL_FUERTE) {
+        return DERECHA_FUERTE;
+    }
+
+    // =========================
+    // PRIORIDAD 2: MEDIA
+    // =========================
+    if (obsF && lecturas.frente < UMBRAL_MEDIA) {
+        return FRENTE_MEDIA;
+    }
+
+    if (obsL && lecturas.izquierda < UMBRAL_MEDIA) {
+        return IZQUIERDA_MEDIA;
+    }
+
+    if (obsR && lecturas.derecha < UMBRAL_MEDIA) {
+        return DERECHA_MEDIA;
+    }
+
+    // =========================
+    // PRIORIDAD 3: LEVE
+    // =========================
+    if (obsF) {
+        return FRENTE_LEVE;
     }
 
     if (obsL) {
-        return alertaPorIzquierda(lecturas.izquierda);
+        return IZQUIERDA_LEVE;
     }
 
     if (obsR) {
-        return alertaPorDerecha(lecturas.derecha);
+        return DERECHA_LEVE;
     }
 
     return SIN_ALERTA;
