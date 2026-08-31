@@ -212,10 +212,29 @@ button {
 
 <br>
 
+<div style="position:relative; width:95%; margin:auto;">
+
 <input
 type="password"
+id="password"
 name="password"
-placeholder="Contraseña WiFi">
+placeholder="Contraseña WiFi"
+style="width:100%; box-sizing:border-box; padding-right:45px;">
+
+<span
+onclick="mostrarPassword()"
+style="
+position:absolute;
+right:12px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+font-size:20px;
+">
+👁️
+</span>
+
+</div>
 
 <br>
 
@@ -232,6 +251,17 @@ Actualizar redes
 </a>
 
 </div>
+<script>
+function mostrarPassword() {
+    const campo = document.getElementById("password");
+
+    if (campo.type === "password") {
+        campo.type = "text";
+    } else {
+        campo.type = "password";
+    }
+}
+</script>
 
 </body>
 

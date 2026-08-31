@@ -1,5 +1,6 @@
 #include <Arduino.h>
-#include "wifi_manager.h"
+//#include "wifi_manager.h" //Implementación futura
+#include "bluetooth_manager.h"
 #include "sensores.h"
 #include "alertas.h"
 #include "audio.h"
@@ -159,8 +160,9 @@ void setup() {
     Serial.println("MOTORES SOLO ALERTA FUERTE");
     Serial.println("==============================");
 
-    iniciarWiFi();
+    //iniciarWiFi();
     iniciarSensores();
+    iniciarBluetooth();
     iniciarMotores();
     iniciarAudio();
     apagarMotores();
@@ -175,16 +177,15 @@ void setup() {
 // ===============================
 
 void loop() {
-    procesarWiFi();
+    //procesarWiFi();
     LecturasSensores lecturas = leerSensores();
 
     imprimirLecturas(lecturas);
 
     TipoAlerta alerta = determinarAlerta(lecturas);
-
     Serial.print("Alerta dominante: ");
     Serial.println(alerta);
-
+    enviarLecturasBluetooth(lecturas, alerta);
     reproducirAudioControlado(alerta);
 
     ejecutarMotores(alerta);
