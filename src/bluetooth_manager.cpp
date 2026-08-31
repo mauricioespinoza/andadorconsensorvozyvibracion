@@ -4,6 +4,28 @@
 
 BluetoothSerial SerialBT;
 
+const char* nombreAlerta(TipoAlerta alerta) {
+    switch (alerta) {
+        case SIN_ALERTA: return "SIN_ALERTA";
+
+        case FRENTE_LEVE: return "FRENTE_LEVE";
+        case FRENTE_MEDIA: return "FRENTE_MEDIA";
+        case FRENTE_FUERTE: return "FRENTE_FUERTE";
+
+        case IZQUIERDA_LEVE: return "IZQUIERDA_LEVE";
+        case IZQUIERDA_MEDIA: return "IZQUIERDA_MEDIA";
+        case IZQUIERDA_FUERTE: return "IZQUIERDA_FUERTE";
+
+        case DERECHA_LEVE: return "DERECHA_LEVE";
+        case DERECHA_MEDIA: return "DERECHA_MEDIA";
+        case DERECHA_FUERTE: return "DERECHA_FUERTE";
+
+        case EMERGENCIA: return "EMERGENCIA";
+
+        default: return "DESCONOCIDA";
+    }
+}
+
 void iniciarBluetooth() {
     SerialBT.begin("ANDADOR_BT");
 
@@ -44,7 +66,9 @@ void enviarLecturasBluetooth(const LecturasSensores& lecturas, TipoAlerta alerta
     SerialBT.println(" V");
 
     SerialBT.print("Alerta: ");
-    SerialBT.println((int)alerta);
+    SerialBT.print((int)alerta);
+    SerialBT.print(" - ");
+    SerialBT.println(nombreAlerta(alerta));
 
     SerialBT.println();
 }
